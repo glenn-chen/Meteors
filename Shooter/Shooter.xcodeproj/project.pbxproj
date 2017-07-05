@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C99154411F0D9022007E8BF5 /* Laser.sks in Resources */ = {isa = PBXBuildFile; fileRef = C99154401F0D9022007E8BF5 /* Laser.sks */; };
+		C99154431F0D9A35007E8BF5 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99154421F0D9A35007E8BF5 /* MSButtonNode.swift */; };
+		C99154451F0D9AA9007E8BF5 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = C99154441F0D9AA9007E8BF5 /* Explosion.sks */; };
 		C9BFC5051F0AA70E002DF748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFC5041F0AA70E002DF748 /* AppDelegate.swift */; };
 		C9BFC5071F0AA70E002DF748 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9BFC5061F0AA70E002DF748 /* GameScene.sks */; };
 		C9BFC5091F0AA70E002DF748 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9BFC5081F0AA70E002DF748 /* Actions.sks */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C99154401F0D9022007E8BF5 /* Laser.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Laser.sks; sourceTree = "<group>"; };
+		C99154421F0D9A35007E8BF5 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		C99154441F0D9AA9007E8BF5 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		C9BFC5011F0AA70E002DF748 /* Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BFC5041F0AA70E002DF748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9BFC5061F0AA70E002DF748 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -107,9 +113,12 @@
 			children = (
 				C9BFC5041F0AA70E002DF748 /* AppDelegate.swift */,
 				C9BFC5061F0AA70E002DF748 /* GameScene.sks */,
+				C99154401F0D9022007E8BF5 /* Laser.sks */,
 				C9BFC5381F0AE272002DF748 /* Meteor.sks */,
 				C9BFC5081F0AA70E002DF748 /* Actions.sks */,
 				C9BFC50A1F0AA70E002DF748 /* GameScene.swift */,
+				C99154421F0D9A35007E8BF5 /* MSButtonNode.swift */,
+				C99154441F0D9AA9007E8BF5 /* Explosion.sks */,
 				C9BFC50C1F0AA70E002DF748 /* GameViewController.swift */,
 				C9BFC50E1F0AA70E002DF748 /* Main.storyboard */,
 				C9BFC5111F0AA70E002DF748 /* Assets.xcassets */,
@@ -247,7 +256,9 @@
 				C9BFC5101F0AA70E002DF748 /* Main.storyboard in Resources */,
 				C9BFC5071F0AA70E002DF748 /* GameScene.sks in Resources */,
 				C9BFC5121F0AA70E002DF748 /* Assets.xcassets in Resources */,
+				C99154411F0D9022007E8BF5 /* Laser.sks in Resources */,
 				C9BFC5391F0AE272002DF748 /* Meteor.sks in Resources */,
+				C99154451F0D9AA9007E8BF5 /* Explosion.sks in Resources */,
 				C9BFC5151F0AA70E002DF748 /* LaunchScreen.storyboard in Resources */,
 				C9BFC5091F0AA70E002DF748 /* Actions.sks in Resources */,
 			);
@@ -277,6 +288,7 @@
 				C9BFC50B1F0AA70E002DF748 /* GameScene.swift in Sources */,
 				C9BFC50D1F0AA70E002DF748 /* GameViewController.swift in Sources */,
 				C9BFC5051F0AA70E002DF748 /* AppDelegate.swift in Sources */,
+				C99154431F0D9A35007E8BF5 /* MSButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +535,7 @@
 				C9BFC5311F0AA70E002DF748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9BFC5321F0AA70E002DF748 /* Build configuration list for PBXNativeTarget "ShooterTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +544,7 @@
 				C9BFC5341F0AA70E002DF748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9BFC5351F0AA70E002DF748 /* Build configuration list for PBXNativeTarget "ShooterUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +553,7 @@
 				C9BFC5371F0AA70E002DF748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
