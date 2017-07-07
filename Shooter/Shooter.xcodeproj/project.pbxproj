@@ -10,6 +10,8 @@
 		C99154411F0D9022007E8BF5 /* Laser.sks in Resources */ = {isa = PBXBuildFile; fileRef = C99154401F0D9022007E8BF5 /* Laser.sks */; };
 		C99154431F0D9A35007E8BF5 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99154421F0D9A35007E8BF5 /* MSButtonNode.swift */; };
 		C99154451F0D9AA9007E8BF5 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = C99154441F0D9AA9007E8BF5 /* Explosion.sks */; };
+		C9A620FA1F0E9A10003B62B5 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A620F91F0E9A10003B62B5 /* MainMenu.swift */; };
+		C9A620FC1F0E9B2E003B62B5 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9A620FB1F0E9B2E003B62B5 /* MainMenu.sks */; };
 		C9BFC5051F0AA70E002DF748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFC5041F0AA70E002DF748 /* AppDelegate.swift */; };
 		C9BFC5071F0AA70E002DF748 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9BFC5061F0AA70E002DF748 /* GameScene.sks */; };
 		C9BFC5091F0AA70E002DF748 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9BFC5081F0AA70E002DF748 /* Actions.sks */; };
@@ -21,6 +23,7 @@
 		C9BFC5201F0AA70E002DF748 /* ShooterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFC51F1F0AA70E002DF748 /* ShooterTests.swift */; };
 		C9BFC52B1F0AA70E002DF748 /* ShooterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFC52A1F0AA70E002DF748 /* ShooterUITests.swift */; };
 		C9BFC5391F0AE272002DF748 /* Meteor.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9BFC5381F0AE272002DF748 /* Meteor.sks */; };
+		C9C3AD961F0FEEE500CBB702 /* Emo.sks in Resources */ = {isa = PBXBuildFile; fileRef = C9C3AD951F0FEEE500CBB702 /* Emo.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,8 @@
 		C99154401F0D9022007E8BF5 /* Laser.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Laser.sks; sourceTree = "<group>"; };
 		C99154421F0D9A35007E8BF5 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		C99154441F0D9AA9007E8BF5 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		C9A620F91F0E9A10003B62B5 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		C9A620FB1F0E9B2E003B62B5 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		C9BFC5011F0AA70E002DF748 /* Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BFC5041F0AA70E002DF748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9BFC5061F0AA70E002DF748 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -61,6 +66,7 @@
 		C9BFC52A1F0AA70E002DF748 /* ShooterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShooterUITests.swift; sourceTree = "<group>"; };
 		C9BFC52C1F0AA70E002DF748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9BFC5381F0AE272002DF748 /* Meteor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Meteor.sks; sourceTree = "<group>"; };
+		C9C3AD951F0FEEE500CBB702 /* Emo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Emo.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +119,14 @@
 			children = (
 				C9BFC5041F0AA70E002DF748 /* AppDelegate.swift */,
 				C9BFC5061F0AA70E002DF748 /* GameScene.sks */,
+				C9BFC50A1F0AA70E002DF748 /* GameScene.swift */,
+				C9A620FB1F0E9B2E003B62B5 /* MainMenu.sks */,
+				C9A620F91F0E9A10003B62B5 /* MainMenu.swift */,
 				C99154401F0D9022007E8BF5 /* Laser.sks */,
 				C9BFC5381F0AE272002DF748 /* Meteor.sks */,
 				C9BFC5081F0AA70E002DF748 /* Actions.sks */,
-				C9BFC50A1F0AA70E002DF748 /* GameScene.swift */,
 				C99154421F0D9A35007E8BF5 /* MSButtonNode.swift */,
+				C9C3AD951F0FEEE500CBB702 /* Emo.sks */,
 				C99154441F0D9AA9007E8BF5 /* Explosion.sks */,
 				C9BFC50C1F0AA70E002DF748 /* GameViewController.swift */,
 				C9BFC50E1F0AA70E002DF748 /* Main.storyboard */,
@@ -254,10 +263,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9BFC5101F0AA70E002DF748 /* Main.storyboard in Resources */,
+				C9A620FC1F0E9B2E003B62B5 /* MainMenu.sks in Resources */,
 				C9BFC5071F0AA70E002DF748 /* GameScene.sks in Resources */,
 				C9BFC5121F0AA70E002DF748 /* Assets.xcassets in Resources */,
 				C99154411F0D9022007E8BF5 /* Laser.sks in Resources */,
 				C9BFC5391F0AE272002DF748 /* Meteor.sks in Resources */,
+				C9C3AD961F0FEEE500CBB702 /* Emo.sks in Resources */,
 				C99154451F0D9AA9007E8BF5 /* Explosion.sks in Resources */,
 				C9BFC5151F0AA70E002DF748 /* LaunchScreen.storyboard in Resources */,
 				C9BFC5091F0AA70E002DF748 /* Actions.sks in Resources */,
@@ -285,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A620FA1F0E9A10003B62B5 /* MainMenu.swift in Sources */,
 				C9BFC50B1F0AA70E002DF748 /* GameScene.swift in Sources */,
 				C9BFC50D1F0AA70E002DF748 /* GameViewController.swift in Sources */,
 				C9BFC5051F0AA70E002DF748 /* AppDelegate.swift in Sources */,

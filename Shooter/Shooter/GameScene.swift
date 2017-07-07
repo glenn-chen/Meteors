@@ -25,16 +25,18 @@ class GameScene: SKScene {
     var meteorSource: SKNode!
     var scoreLabel: SKLabelNode!
     var restartButton: MSButtonNode!
+    var backButton: MSButtonNode!
     var laser: SKNode!
     
     var laserTimer: CFTimeInterval = 0 {
         didSet {
-            if laserTimer > 0.3 {
+            if laserTimer == 0.3 {
                 laser.isHidden = true
             }
         }
     }
     var spawnTimer: CFTimeInterval = 0
+    var spawnFrequency: CFTimeInterval = 1.0
     let fixedDelta: CFTimeInterval = 1.0 / 50.0 /* 50 FPS */
     var score: Int = 0 {
         didSet {
@@ -43,6 +45,14 @@ class GameScene: SKScene {
     }
     
     let meteorRadius = 20.0
+    
+    class func loadGameScene() -> GameScene? {
+        guard let scene = GameScene(fileNamed: "GameScene") else {
+            return nil
+        }
+        scene.scaleMode = .aspectFit
+        return scene
+    }
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
@@ -61,12 +71,24 @@ class GameScene: SKScene {
             let skView = self.view as SKView!
             
             /* Load Game scene */
-            let scene = GameScene(fileNamed:"GameScene") as GameScene!
+            let scene = GameScene(fileNamed: "GameScene") as GameScene!
             
             /* Ensure correct aspect mode */
             scene?.scaleMode = .aspectFill
             
             /* Restart game scene */
+            skView?.presentScene(scene)
+        }
+        
+        backButton = self.childNode(withName: "backButton") as! MSButtonNode
+        backButton.state = .MSButtonNodeStateHidden
+        backButton.selectedHandler = {
+            let skView = self.view as SKView!
+            
+            let scene = MainMenu(fileNamed: "MainMenu") as MainMenu!
+            
+            scene?.scaleMode = .aspectFill
+            
             skView?.presentScene(scene)
         }
         
@@ -91,42 +113,51 @@ class GameScene: SKScene {
         laser.position.x = touchLocation.x
         laser.isHidden = false
         
+        var meteorHit = false
+        
         for meteor in meteorLayer.children {
             let meteorNode = meteor.children[0].children[0]
-            let meteorPosition = meteorNode.convert(meteorNode.position, to: self)
-            
-    /*        print("touch \(touchLocation)")
-            print(meteorPosition) */
+        //   let meteorPosition = meteorNode.convert(meteorNode.position, to: self)
+            let meteorPosition = meteor.convert(meteorNode.position, to: self)
             
             if abs(meteorPosition.x - touchLocation.x) <= CGFloat(meteorRadius) {
+                
+                // Destroy meteor
                 meteor.removeFromParent()
                 score += 1
                 
                 let particles = SKEmitterNode(fileNamed: "Explosion")!
-                /* Position particles at the Seal node
-                 If you've moved Seal to an sks, this will need to be
-                 node.convert(node.position, to: self), not node.position */
-                particles.position = CGPoint(x: touchLocation.x, y: meteorPosition.y + size.height - 100)
+
+                particles.position = CGPoint(x: touchLocation.x, y: meteorPosition.y)
+         //       particles.position = CGPoint(x: touchLocation.x, y: meteorPosition.y + size.height/2 + 100)
+                particles.zPosition = 3
                 /* Add particles to scene */
                 addChild(particles)
                 let wait = SKAction.wait(forDuration: 0.7)
                 let removeParticles = SKAction.removeFromParent()
                 let seq = SKAction.sequence([wait, removeParticles])
                 particles.run(seq)
+                
+                meteorHit = true
             }
         }
+        
+        if !meteorHit {
+            gameOver()
+        }
+        meteorHit = false
     }
     
     override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
+        
+        laserTimer += fixedDelta
         
         if gameState == .gameOver {
             return
         }
         
         spawnTimer += fixedDelta
-        
-        laserTimer += fixedDelta
         
         updateMeteors()
     }
@@ -138,29 +169,67 @@ class GameScene: SKScene {
             /* Get obstacle node position, convert node position to scene space */
             let meteorNode = meteor.children[0].children[0]
             let realPosition = meteorNode.convert(meteorNode.position, to: self)
-          //  print(realPosition)
+
             /* Check if obstacle has left the scene */
-            if realPosition.y <= -size.height {
+            if realPosition.y <= -size.height + 20 {
                 /* Game over */
                 meteor.removeFromParent()
-                scoreLabel.text = "how disappointing"
-                laser.isHidden = true
-                gameState = .gameOver
-                restartButton.state = .MSButtonNodeStateActive
+                gameOver()
             }
         }
         
-        if spawnTimer >= 1.0 {
+        if spawnTimer >= spawnFrequency {
             /* Create a new meteor by copying the source meteor */
             let newMeteor = meteorSource.copy() as! SKNode
             
             /* Generate new meteor position */
-            let randomPosition = CGPoint(x: CGFloat.random(min: 20, max: 548), y: 350)
+            let xPos = CGFloat.random(min: 35, max: 533)
+            let randomPosition = CGPoint(x: xPos, y: 350)
             newMeteor.position = self.convert(randomPosition, to: meteorLayer)
             meteorLayer.addChild(newMeteor)
+            
+            // Apply an impulse at the vector.
+            var dx: CGFloat!
+            if xPos > 200 && xPos < 348 {
+                dx = CGFloat.random(min: -1, max: 1) * CGFloat.random(min: -1, max: 1) * 8
+            }
+            else if xPos <= 200 {
+                dx = CGFloat.random(min: -2, max: 5)
+            }
+            else {
+                dx = CGFloat.random(min: -5, max: 2)
+            }
+            newMeteor.children[0].children[0].physicsBody?.applyImpulse(CGVector(dx: dx, dy: 0))
+
             // Reset spawn timer
             spawnTimer = 0
+            // Decrement time to spawn meteor only if it's above 0.5 seconds
+            if spawnFrequency > 0.35 {
+                spawnFrequency *= 0.985
+            }
+            else if self.physicsWorld.gravity.dy > -8 {
+                // after the spawn frequency is its max, increase gravity
+                self.physicsWorld.gravity.dy -= 0.25
+            }
         }
+    }
+    
+    func gameOver() {
+        if score >= 1000 {
+            scoreLabel.text = "i guess \(score) is okay by your standards"
+        }
+        else if score >= 100 {
+            scoreLabel.text = "\(score)...at least you reached triple digits"
+        }
+        else if score > 0 {
+            scoreLabel.text = "only \(score)? how disappointing"
+        }
+        else {
+            scoreLabel.text = "pathetic"
+        }
+        gameState = .gameOver
+        restartButton.state = .MSButtonNodeStateActive
+        backButton.state = .MSButtonNodeStateActive
     }
 }
 
